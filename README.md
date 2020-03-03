@@ -1,3 +1,11 @@
+# U07MovieApp
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
 # u07-angular-movie-app
 
 In this assignment, you will build a simple application using the Angular framework (currently version 9). This application should allow the user to view information about movies and actors which are fetched from an external API. For this assignment, you should build only a front-end, and no back-end application.
@@ -51,3 +59,4 @@ Grading Principle:
 In order to obtain "Godkänt", you must show that you are able to apply your knowledge to develop simple Angular solutions with good competence.
 
 In order to obtain "Väl gödkänt", you must show that beyond just developing a simple application, you are capable, without help from the instructor, to develop your solution further to cover the extra requirements/challenges
+
