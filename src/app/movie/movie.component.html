@@ -1,0 +1,16 @@
+<h2 class="text-center p-4">Popular movies</h2>
+<div class="card-columns">
+  <div *ngFor="let movie of movies" class="card">
+    <div class="row no-gutters">
+      <div class="col-auto">
+        <img src="{{movie.poster}}" class="img-fluid" alt="{{movie.title}}" width="100px">
+      </div>
+      <div class="col">
+        <div class="card-block px-2">
+          <h4 class="card-title">{{movie.title}}</h4>
+          <a routerLink="/detail/{{movie.id}}" class="btn btn-primary">more details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
