@@ -1,9 +1,11 @@
 /* Application-wide Styles */
-* {
+/* * {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #454d55;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -20,4 +22,4 @@ body {
 body, input[type="text"], button {
   color: #333;
   font-family: Cambria, Georgia;
-}
+} */

@@ -1,0 +1,22 @@
+<h2 class="text-center p-4">{{movie.title}}</h2>
+<div class="container">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-1">
+            {{movie.year}}
+        </div>
+        <div class="col-1">
+            {{movie.rating}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img src="{{movie.poster}}" alt="{{movie.title}}" width="75%"/>
+        </div>
+        <div class="col">
+            <p class="text-center">{{movie.description}}</p>
+        </div>
+    </div>
+</div>
+<button (click)="goBack()">go back</button>
