@@ -1,31 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 import { Movie } from './movie';
-
-
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class MovieService {
+  private movieApi = 'https://api.themoviedb.org/3/movie';
+  private apiKey = '?api_key=fc4554a1c64f37d7ea7ba6f5d3d04a18';
 
-  private moviesUrl = 'api/movies';
-
-  httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-  }
-
-  constructor(
-    private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.moviesUrl)
+    return this.http.get<Movie[]>(`${this.movieApi}/popular${this.apiKey}`)
       .pipe(
         catchError(this.handleError<Movie[]>('getMovies', []))
       );
@@ -33,9 +25,9 @@ export class MovieService {
 
   /** GET hero by id. Will 404 if id not found */
   getMovie(id: number): Observable<Movie> {
-    const url = `${this.moviesUrl}/${id}`;
+    const url = `${this.movieApi}/${id}${this.apiKey}`;
     return this.http.get<Movie>(url).pipe(
-      catchError(this.handleError<Movie>(`getHero id=${id}`))
+      catchError(this.handleError<Movie>(`getMovie id=${id}`))
     );
   }
 
@@ -43,7 +35,7 @@ export class MovieService {
     if (!term.trim()) {
       return of([]);
     }
-    return this.http.get<Movie[]>(`${this.moviesUrl}/?title=${term}`).pipe(
+    return this.http.get<Movie[]>(`${this.movieApi}/?title=${term}`).pipe(
       catchError(this.handleError<Movie[]>('searchMovies', []))
     );
   }
@@ -51,8 +43,7 @@ export class MovieService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      console.error(error);
   
       // Let the app keep running by returning an empty result.
       return of(result as T);

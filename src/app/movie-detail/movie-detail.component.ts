@@ -13,6 +13,9 @@ import { MovieService } from '../movie.service';
 export class MovieDetailComponent implements OnInit {
 
   movie: Movie; 
+  imgBaseUrl: string = 'https://image.tmdb.org/t/p/';
+  width154: string = 'w154';
+
 
   constructor(
     private route: ActivatedRoute,

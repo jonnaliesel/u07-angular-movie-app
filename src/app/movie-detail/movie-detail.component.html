@@ -2,20 +2,18 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <h4>Release date: </h4><p>{{movie.release_date}}</p>
         </div>
-        <div class="col-1">
-            {{movie.year}}
-        </div>
-        <div class="col-1">
-            {{movie.rating}}
+        <div class="col">
+            <h4>Average rating: </h4><p>{{movie.vote_average}}</p>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <img src="{{movie.poster}}" alt="{{movie.title}}" width="75%"/>
+            <img src="{{imgBaseUrl}}{{width154}}{{movie.poster_path}}" alt="{{movie.title}}" />
         </div>
         <div class="col">
-            <p class="text-center">{{movie.description}}</p>
+            <p class="text-center">{{movie.overview}}</p>
         </div>
     </div>
 </div>

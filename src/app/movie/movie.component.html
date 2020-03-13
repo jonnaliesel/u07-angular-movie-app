@@ -3,7 +3,7 @@
   <div *ngFor="let movie of movies" class="card">
     <div class="row no-gutters">
       <div class="col-auto">
-        <img src="{{movie.poster}}" class="img-fluid" alt="{{movie.title}}" width="100px">
+        <img src="{{imgBaseUrl}}{{width92}}{{movie.poster_path}}" class="img-fluid" alt="{{movie.title}}" width="100px">
       </div>
       <div class="col">
         <div class="card-block px-2">
