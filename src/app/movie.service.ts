@@ -20,11 +20,15 @@ export class MovieService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }
 
-  // url: string = 'https://jsonplaceholder.typicode.com/users';
-  // movies: Movie[] = [];
-
   constructor(
     private http: HttpClient) {
+  }
+
+  getMovies(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(this.moviesUrl)
+      .pipe(
+        catchError(this.handleError<Movie[]>('getMovies', []))
+      );
   }
 
   /** GET hero by id. Will 404 if id not found */
@@ -35,11 +39,13 @@ export class MovieService {
     );
   }
 
-  getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.moviesUrl)
-      .pipe(
-        catchError(this.handleError<Movie[]>('getMovies', []))
-      );
+  searchMovies(term: string): Observable<Movie[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<Movie[]>(`${this.moviesUrl}/?title=${term}`).pipe(
+      catchError(this.handleError<Movie[]>('searchMovies', []))
+    );
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
