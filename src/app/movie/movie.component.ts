@@ -10,7 +10,9 @@ import { MovieService } from '../movie.service';
 
 export class MovieComponent implements OnInit {
 
-  movies: Movie[]; 
+  movies: Movie[];
+  imgBaseUrl: string = 'https://image.tmdb.org/t/p/';
+  width92: string = 'w92';
   
   constructor(private movieService: MovieService) { }
 
@@ -20,7 +22,6 @@ export class MovieComponent implements OnInit {
 
   getMovies(): void {
     this.movieService.getMovies()
-    .subscribe(movies => this.movies = movies);
+    .subscribe(movies => this.movies = movies['results']);
   }
-
 }
